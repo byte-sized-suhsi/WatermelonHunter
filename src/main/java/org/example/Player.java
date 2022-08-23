@@ -37,7 +37,7 @@ public class Player extends Movable
         Main.terminal.setCursorPosition(x,y);
         Main.terminal.putCharacter(symbol);
 
-        System.out.println("Current position, y: " + y + ", x: " + x);
+        //System.out.println("Current position, y: " + y + ", x: " + x);
 
         // Tar bort den gamla karaktären
         Main.terminal.setCursorPosition(oldX,oldY);
