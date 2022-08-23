@@ -16,17 +16,15 @@ public class Main {
         terminal = defaultTerminalFactory.createTerminal();
         terminal.setCursorVisible(false);
 
-        // TODO: do while för game loop
-        //      läs input, rör spelare och monster
-
         Player player = new Player(10,10,10,10,'X');
 
+        // TODO: do while för game loop
+        //      läs input, rör spelare och monster
         do {
             player.move();
         } while(true);
     }
 
-    // TODO: Metod för att läsa input
     public static KeyStroke readUserInputType() throws IOException, InterruptedException {
         KeyStroke keyStroke = null;
 
