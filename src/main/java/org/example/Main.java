@@ -1,5 +1,6 @@
 package org.example;
 
+import com.googlecode.lanterna.Symbols;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -16,12 +17,16 @@ public class Main {
         terminal = defaultTerminalFactory.createTerminal();
         terminal.setCursorVisible(false);
 
+
+
         Player player = new Player(10,10,10,10,'X');
+        Treasure treasure1 = new Treasure(10,10,10,10, Symbols.HEART,player);
 
         // TODO: do while för game loop
         //      läs input, rör spelare och monster
         do {
             player.move();
+            treasure1.move();
         } while(true);
     }
 

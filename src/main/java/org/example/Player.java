@@ -27,10 +27,10 @@ public class Player extends Movable
         //
         switch(typeString)
         {
-            case "ArrowUp" -> this.y--;           // y - 1
-            case "ArrowDown" -> this.y++;         // y + 1
-            case "ArrowRight" -> this.x++;        // x + 1
-            case "ArrowLeft" -> this.x--;         // x - 1
+            case "ArrowUp" -> this.y-=3;           // y - 1
+            case "ArrowDown" -> this.y+=3;         // y + 1
+            case "ArrowRight" -> this.x+=2;        // x + 1
+            case "ArrowLeft" -> this.x-=2;         // x - 1
         }
 
         // Skriver ut den nya karaktären
