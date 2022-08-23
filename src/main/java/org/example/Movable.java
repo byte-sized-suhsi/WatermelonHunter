@@ -6,7 +6,6 @@ public abstract class Movable extends PositionObject
 {
     protected int oldX;
     protected int oldY;
-    protected char symbol;
 
     public Movable(int oldX, int oldY, int x, int y, char symbol) {
         super(x, y, symbol);
