@@ -3,6 +3,10 @@ package org.example;
 public class Enemy extends Movable
 {
 
+    public Enemy(int oldX, int oldY, int x, int y, char symbol) {
+        super(oldX, oldY, x, y, symbol);
+    }
+
     @Override
     public void move() {
         /*

@@ -7,6 +7,10 @@ import java.io.IOException;
 
 public class Player extends Movable
 {
+    public Player(int oldX, int oldY, int x, int y, char symbol) {
+        super(oldX, oldY, x, y, symbol);
+    }
+
     @Override
     public void move() throws IOException, InterruptedException {
         // TODO: förflytta spelaren
@@ -14,12 +18,27 @@ public class Player extends Movable
         KeyType type = keyStroke.getKeyType();
         String typeString = type.name();
 
-        /*
-        switch(type)
-        {
-            case "ArrowUp":
-                break;
+        // Spara dom gamla x koordinaterna
+        oldX = x;
+        oldY = y;
 
-        }*/
+        //
+        switch(typeString)
+        {
+            case "ArrowUp" -> this.y--;           // y - 1
+            case "ArrowDown" -> this.y++;         // y + 1
+            case "ArrowRight" -> this.x++;        // x + 1
+            case "ArrowLeft" -> this.x--;         // x - 1
+        }
+
+        // Skriver ut den nya karaktären
+        Main.terminal.setCursorPosition(x,y);
+        Main.terminal.putCharacter(symbol);
+
+        // Tar bort den gamla karaktären
+        Main.terminal.setCursorPosition(oldX,oldY);
+        Main.terminal.putCharacter(' ');
+
+        Main.terminal.flush();
     }
 }
