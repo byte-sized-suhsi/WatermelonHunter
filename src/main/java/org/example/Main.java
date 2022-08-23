@@ -11,15 +11,19 @@ public class Main {
     public static DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     public static Terminal terminal = null;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         // TODO: Terminalinitiering
         terminal = defaultTerminalFactory.createTerminal();
+        terminal.setCursorVisible(false);
 
         // TODO: do while för game loop
         //      läs input, rör spelare och monster
 
+        Player player = new Player(10,10,10,10,'X');
 
-
+        do {
+            player.move();
+        } while(true);
     }
 
     // TODO: Metod för att läsa input
