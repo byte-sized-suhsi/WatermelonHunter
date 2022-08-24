@@ -1,6 +1,6 @@
 package org.example;
 
-public class PositionObject
+public abstract class PositionObject
 {
     protected int x;
     protected int y;
