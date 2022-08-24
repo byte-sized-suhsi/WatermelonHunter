@@ -10,6 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Treasure extends Movable
 {
 
+
     Player target;
     public Treasure(int oldX, int oldY, int x, int y, char symbol,Player target) {
         super(oldX, oldY, x, y, symbol);
@@ -30,6 +31,12 @@ public class Treasure extends Movable
         } else if (y < target.y) {
             y-=1;
         }
+        boolean hasTreasure = x == target.x && y == target.y;
+        if (hasTreasure){
+            System.out.println("+1");
+        }
+
+
         Main.terminal.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
         Main.terminal.enableSGR(SGR.BOLD);
         Main.terminal.setCursorPosition(x,y);
@@ -42,15 +49,19 @@ public class Treasure extends Movable
         Main.terminal.putCharacter(' ');
 
         Main.terminal.flush();
+        Main.terminal.resetColorAndSGR();
     }
 
-
 }
+//x/y axel obsacle tanken
+//implementera en scoreboard
+//+1 på "liv"
 // TODO: Fly från spelaren.
 // Om treasure.x > player.x
 //        så treasure.x + 1
 // Annars: treasure.y -1
 
 //Randomisera nuvarande lösning?
+
 
 // TODO: Check för att se om man stöter på en vägg eller ett hörn

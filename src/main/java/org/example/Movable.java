@@ -16,7 +16,4 @@ public abstract class Movable extends PositionObject
 
     public abstract void move() throws IOException, InterruptedException;
 }
-//public void render
 
-//rendera ut symboler på x y positioner i terminalen,skapa ´klass render metod render, play treasure ärver metoden preintar i main,
-//super print call
