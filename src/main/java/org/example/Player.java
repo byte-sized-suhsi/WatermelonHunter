@@ -8,9 +8,9 @@ import java.io.IOException;
 public class Player extends Movable
 {
     // Ändra oldX och oldY, kan egentligen bara initieras till x och y
-    public Player(int oldX, int oldY, int x, int y, char symbol)
+    public Player(int x, int y, char symbol)
     {
-        super(oldX, oldY, x, y, symbol);
+        super(x, y, symbol);
     }
 
     @Override

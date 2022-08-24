@@ -20,13 +20,14 @@ public class Main {
         terminal = defaultTerminalFactory.createTerminal();
         terminal.setCursorVisible(false);
 
+
         char c = '☕';
 
-        player = new Player(30,10,30,10,'☕');
-        Enemy enemy = new Enemy(30+20,10,30+20,10, Symbols.TRIANGLE_UP_POINTING_BLACK);
-        Enemy enemy2 = new Enemy(30-20,10,30-20,10, Symbols.TRIANGLE_UP_POINTING_BLACK);
-        Enemy enemy3 = new Enemy(30,10+8,30,10+8, Symbols.TRIANGLE_UP_POINTING_BLACK);
-        Enemy enemy4 = new Enemy(30,10-8,30,10-8, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        player = new Player(30,10,'☕');
+        Enemy enemy = new Enemy(30+20,10, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy2 = new Enemy(30-20,10, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy3 = new Enemy(30,10+8, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy4 = new Enemy(30,10-8, Symbols.TRIANGLE_UP_POINTING_BLACK);
 
 
         // TODO: do while för game loop

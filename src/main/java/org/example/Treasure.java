@@ -3,8 +3,8 @@ package org.example;
 public class Treasure extends Movable
 {
 
-    public Treasure(int oldX, int oldY, int x, int y, char symbol) {
-        super(oldX, oldY, x, y, symbol);
+    public Treasure(int x, int y, char symbol) {
+        super(x, y, symbol);
     }
 
     @Override

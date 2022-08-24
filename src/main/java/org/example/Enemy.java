@@ -6,9 +6,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Enemy extends Movable
 {
 
-    public Enemy(int oldX, int oldY, int x, int y, char symbol)
+    public Enemy(int x, int y, char symbol)
     {
-        super(oldX, oldY, x, y, symbol);
+        super(x, y, symbol);
     }
 
     @Override
