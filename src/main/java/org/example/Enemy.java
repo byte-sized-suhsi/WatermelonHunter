@@ -1,33 +1,48 @@
 package org.example;
 
+import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Enemy extends Movable
 {
 
-    public Enemy(int oldX, int oldY, int x, int y, char symbol) {
+    public Enemy(int oldX, int oldY, int x, int y, char symbol)
+    {
         super(oldX, oldY, x, y, symbol);
     }
 
     @Override
-    public void move() {
+    public void move() throws IOException {
+        // TODO: Implementera move
+        boolean enemyIsRightOfPlayer = this.x > Main.player.x;
+        boolean enemyIsAbovePlayer = this.y < Main.player.y;
+
         /*
-                Spelarens gamla position: x = 10
-                Spelarens nya position: x = 12
+        boolean playerMovedRight = Main.player.x > Main.player.oldX;
+        boolean playerMovedUp = Main.player.y > Main.player.oldY;*/
 
-                Monstrets position: x = 20
+        // Jämför avståndet före och efter att spelaren flyttade sig förra gången
+        double distanceToEnemyBefore = Math.sqrt(Math.pow(this.x - Main.player.oldX,2) + Math.pow(this.y - Main.player.oldY,2));
+        double distanceToEnemyAfter = Math.sqrt(Math.pow(this.x - Main.player.x,2) + Math.pow(this.y - Main.player.y,2));
+        boolean movedCloser = distanceToEnemyAfter < distanceToEnemyBefore;
+        //System.out.printf("\nbefore: %f, after: %f, distance moved: %f\n", distanceToEnemyBefore, distanceToEnemyAfter, distanceToEnemyAfter - distanceToEnemyBefore);
 
-                    Röra sig ifrån:
+        oldX = x;
+        oldY = y;
 
-                    randomtal mellan 0 och 1;
-                    Om randomtal == 0
-                        Om (monster.x - player.oldX > monster.x - player.currentX)
-                            rör monstret ifrån spelaren
-                            monster.x + 1
-                        annars
-                            monstret.x - 1
-                    Om randomtal == 1
-                        Rör sig i y.
+        if (movedCloser) {
+            this.x = enemyIsRightOfPlayer ? x+1 : x-1;
+            this.y = enemyIsAbovePlayer ? y-1 : y+1;
+        } else {
+            this.x = enemyIsRightOfPlayer ? x-1 : x+1;
+            this.y = enemyIsAbovePlayer ? y+1 : y-1;
+        }
 
-         */
+        Main.terminal.setCursorPosition(x,y);
+        Main.terminal.putCharacter(symbol);
+
+        Main.terminal.setCursorPosition(oldX,oldY);
+        Main.terminal.putCharacter(' ');
 
 
         // TODO: ändra monstrets hastighet beroende på om spelaren minskar eller ökar

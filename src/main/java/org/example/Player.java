@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class Player extends Movable
 {
+    // Ändra oldX och oldY, kan egentligen bara initieras till x och y
     public Player(int oldX, int oldY, int x, int y, char symbol)
     {
         super(oldX, oldY, x, y, symbol);
@@ -36,8 +37,6 @@ public class Player extends Movable
         // Skriver ut den nya karaktären
         Main.terminal.setCursorPosition(x,y);
         Main.terminal.putCharacter(symbol);
-
-        //System.out.println("Current position, y: " + y + ", x: " + x);
 
         // Tar bort den gamla karaktären
         Main.terminal.setCursorPosition(oldX,oldY);
