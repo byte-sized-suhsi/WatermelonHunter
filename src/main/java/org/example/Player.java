@@ -7,10 +7,34 @@ import java.io.IOException;
 
 public class Player extends Movable
 {
+
+
+    private int lifeCounter;
+
     // Ändra oldX och oldY, kan egentligen bara initieras till x och y
     public Player(int x, int y, char symbol)
     {
         super(x, y, symbol);
+
+        lifeCounter = 0;
+    }
+
+    public int getLifeCounter() {
+        return lifeCounter;
+    }
+
+    public void  changeLife(int numberOfLifes)
+    {
+        lifeCounter += numberOfLifes;
+    }
+
+    public void setLifeCounter(int lifeCounter) {
+        this.lifeCounter = lifeCounter;
+    }
+
+    @Override
+    public void interact() {
+        // do nothing
     }
 
     @Override
@@ -20,6 +44,8 @@ public class Player extends Movable
         KeyStroke keyStroke = Main.readUserInputType();
         KeyType type = keyStroke.getKeyType();
         String typeString = type.name();
+
+
 
         // Spara dom gamla x koordinaterna
         oldX = x;
@@ -35,13 +61,13 @@ public class Player extends Movable
         }
 
         // Skriver ut den nya karaktären
-        Main.terminal.setCursorPosition(x,y);
-        Main.terminal.putCharacter(symbol);
+        TerminalHandler.terminal.setCursorPosition(x,y);
+        TerminalHandler.terminal.putCharacter(symbol);
 
         // Tar bort den gamla karaktären
-        Main.terminal.setCursorPosition(oldX,oldY);
-        Main.terminal.putCharacter(' ');
+        TerminalHandler.terminal.setCursorPosition(oldX,oldY);
+        TerminalHandler.terminal.putCharacter(' ');
 
-        Main.terminal.flush();
+        TerminalHandler.terminal.flush();
     }
 }
