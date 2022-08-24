@@ -17,3 +17,4 @@ public abstract class Movable extends PositionObject
 
     public abstract void move() throws IOException, InterruptedException;
 }
+
