@@ -6,9 +6,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Enemy extends Movable
 {
 
-    public Enemy(int oldX, int oldY, int x, int y, char symbol)
+    public Enemy(int x, int y, char symbol)
     {
-        super(oldX, oldY, x, y, symbol);
+        super(x, y, symbol);
+    }
+
+    @Override
+    public void interact() {
+        // TODO: Ta bort liv om liv finns annars ta kål på spelaren
+        //Main.player.changeLife(-1);
+        System.out.println("KILL!");
     }
 
     @Override
@@ -38,11 +45,11 @@ public class Enemy extends Movable
             this.y = enemyIsAbovePlayer ? y+1 : y-1;
         }
 
-        Main.terminal.setCursorPosition(x,y);
-        Main.terminal.putCharacter(symbol);
+        TerminalHandler.terminal.setCursorPosition(x,y);
+        TerminalHandler.terminal.putCharacter(symbol);
 
-        Main.terminal.setCursorPosition(oldX,oldY);
-        Main.terminal.putCharacter(' ');
+        TerminalHandler.terminal.setCursorPosition(oldX,oldY);
+        TerminalHandler.terminal.putCharacter(' ');
 
 
         // TODO: ändra monstrets hastighet beroende på om spelaren minskar eller ökar

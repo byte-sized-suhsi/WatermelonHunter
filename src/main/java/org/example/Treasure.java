@@ -9,12 +9,18 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Treasure extends Movable
 {
+    Player target = Main.player;
+    public Treasure(int x, int y, char symbol) {
+        super(x, y, symbol);
+    }
+
+    @Override
+    public void interact()
+    {
+        // TODO: Lägg till liv för spelaren.
 
 
-    Player target;
-    public Treasure(int oldX, int oldY, int x, int y, char symbol,Player target) {
-        super(oldX, oldY, x, y, symbol);
-        this.target = target;
+        // TODO: Printa ut på nåt sätt
     }
 
 
@@ -38,19 +44,19 @@ public class Treasure extends Movable
         }
 
 
-        Main.terminal.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
-        Main.terminal.enableSGR(SGR.BOLD);
-        Main.terminal.setCursorPosition(x,y);
-        Main.terminal.putCharacter(symbol);
+        TerminalHandler.terminal.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
+        TerminalHandler.terminal.enableSGR(SGR.BOLD);
+        TerminalHandler.terminal.setCursorPosition(x,y);
+        TerminalHandler.terminal.putCharacter(symbol);
 
         //System.out.println("Current position, y: " + y + ", x: " + x);
 
         // Tar bort den gamla karaktären
-        Main.terminal.setCursorPosition(oldX,oldY);
-        Main.terminal.putCharacter(' ');
+        TerminalHandler.terminal.setCursorPosition(oldX,oldY);
+        TerminalHandler.terminal.putCharacter(' ');
 
-        Main.terminal.flush();
-        Main.terminal.resetColorAndSGR();
+        TerminalHandler.terminal.flush();
+        TerminalHandler.terminal.resetColorAndSGR();
     }
 
 }
@@ -62,7 +68,5 @@ public class Treasure extends Movable
 //        så treasure.x + 1
 // Annars: treasure.y -1
 
-//Randomisera nuvarande lösning?
+        // TODO: Check för att se om man stöter på en vägg eller ett hörn
 
-
-// TODO: Check för att se om man stöter på en vägg eller ett hörn
