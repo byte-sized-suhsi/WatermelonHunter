@@ -33,7 +33,8 @@ public class Treasure extends Movable
         }
         boolean hasTreasure = x == target.x && y == target.y;
         if (hasTreasure){
-            System.out.println("+1");
+
+
         }
 
 
