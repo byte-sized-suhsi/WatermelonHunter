@@ -19,6 +19,8 @@ public class Enemy extends Movable
         {
             System.out.println("NOM! Loose a life!");
             Main.player.changeLife(-1);
+
+            // Flytta x och y
         }
     }
 

@@ -39,9 +39,10 @@ public class Main {
 
         obstacles.addAll(TerminalHandler.printBox(5, 5, 40, 30, Symbols.BLOCK_SOLID, TextColor.ANSI.CYAN));
 
-        movables.add(new Player(50,25,'☕'));
+        movables.add(new Player(10,25,'☕'));
         movables.add(new Enemy(29,20, Symbols.TRIANGLE_UP_POINTING_BLACK));
-        movables.add(new Treasure(31,11,Symbols.HEART));
+        movables.add(new Treasure(10,26,Symbols.HEART));
+        movables.add(new PowerUp(10,26,Symbols.CLUB));
 
         posObjects.addAll(movables);
         posObjects.addAll(obstacles);
@@ -59,8 +60,11 @@ public class Main {
                     if (movable.x == posObject.x && movable.y == posObject.y)
                     {
                         posObject.interact(movable);
-                        //if(posObject instanceof Treasure)
-                          //  posObjects.remove(posObject);
+                        //if(posObject instanceof Treasure) {
+                        //    posObjects.remove(posObject);
+                        //    movables.remove(posObject);
+                       // }
+
                     }
                 }
             }
