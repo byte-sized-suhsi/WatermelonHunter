@@ -2,6 +2,7 @@ package org.example;
 
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.Symbols;
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 
 import java.io.IOException;
@@ -11,7 +12,6 @@ public class Treasure extends Movable
 {
     private int heartCount;
     Player target = Main.player;
-    private int place = 90;
     public int getHeartCount() {
         return heartCount;
     }
@@ -30,13 +30,13 @@ public class Treasure extends Movable
     {
         // TODO: Lägg till liv för spelaren.
 
-        /*if(movable instanceof Player)
-            Main.player.changeLife(1);*/
+        if(movable instanceof Player)
+            Main.player.changeLife(1);
 
         // TODO: Printa ut på nåt sätt
         //
-    }
 
+    }
 
     @Override
     public void move() throws IOException {
@@ -53,14 +53,25 @@ public class Treasure extends Movable
             y -= 1;
         }
 
+        for (int row = 0; row < Main.player.getLifeCounter();row++)
+        {
+            //uppdatera cursor pos när DU FLYTTAR NÅGOT, Okej jätte bra.
+            TerminalHandler.terminal.setCursorPosition(50 + row,50);
+            //TerminalHandler.terminal.setCursorPosition(heartCount,70);
+            TerminalHandler.terminal.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
+            TerminalHandler.terminal.enableSGR(SGR.BOLD);
+            TerminalHandler.terminal.putCharacter(Symbols.HEART);
+            TerminalHandler.terminal.flush();
+        }
+        /*
         boolean hasTreasure = x == target.x && y == target.y;
         //när spelaren nått treasure, lägg till hjärtan i heartcount.
         if (hasTreasure) {
-            heartCount++;
-            System.out.println("counting" + heartCount);
-        }if (hasTreasure && heartCount <= 3)
+            //heartCount++;
+            System.out.println("counting" + Main.player.getLifeCounter());
+        }if (hasTreasure && Main.player.getLifeCounter() <= 3)
 
-            for (int row = 0; row < heartCount;row++)
+            for (int row = 0; row < Main.player.getLifeCounter();row++)
             {
                 //uppdatera cursor pos när DU FLYTTAR NÅGOT, Okej jätte bra.
                 TerminalHandler.terminal.setCursorPosition(90 + row,6);
@@ -85,7 +96,7 @@ public class Treasure extends Movable
         TerminalHandler.terminal.putCharacter(' ');
 
         TerminalHandler.terminal.flush();
-        TerminalHandler.terminal.resetColorAndSGR();
+        TerminalHandler.terminal.resetColorAndSGR();*/
     }
 }
 

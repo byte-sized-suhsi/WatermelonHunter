@@ -22,7 +22,8 @@ public class Player extends Movable
 
     public void  changeLife(int numberOfLifes)
     {
-        lifeCounter += numberOfLifes;
+        lifeCounter = lifeCounter < 3 ? lifeCounter += numberOfLifes : lifeCounter;
+
     }
 
     public void setLifeCounter(int lifeCounter) {
