@@ -31,11 +31,16 @@ public class Main {
         positionObjects.add(treasure1);
         //endregion
 
+
+
+
+
         TerminalHandler.terminal.setCursorPosition(0,0);
         TerminalHandler.printBox(5, 5, 40, 30, TextColor.ANSI.CYAN);
         TerminalHandler.printBox(70,5,25,40, TextColor.ANSI.GREEN);
         TerminalHandler.printBox(5,40,50,5, TextColor.ANSI.MAGENTA);
         TerminalHandler.printCircle(10,20,20, TextColor.ANSI.RED);
+
 
         // TODO: do while för game loop
         //      läs input, rör spelare och monster

@@ -28,7 +28,7 @@ public class TerminalHandler {
         }
     }
 
-    private TerminalHandler() {
+    TerminalHandler() {
     }
 
     ;
