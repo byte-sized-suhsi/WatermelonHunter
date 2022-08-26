@@ -15,10 +15,12 @@ public class Treasure extends Movable
     }
 
     @Override
-    public void interact()
+    public void interact(Movable movable)
     {
         // TODO: Lägg till liv för spelaren.
 
+        /*if(movable instanceof Player)
+            Main.player.changeLife(1);*/
 
         // TODO: Printa ut på nåt sätt
     }

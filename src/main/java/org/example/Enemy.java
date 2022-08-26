@@ -12,10 +12,14 @@ public class Enemy extends Movable
     }
 
     @Override
-    public void interact() {
-        // TODO: Ta bort liv om liv finns annars ta kål på spelaren
+    public void interact(Movable movable) {
+        // TODO: Ta bort ett liv. I spelaren finns en check för att se ifall livet är slut.
         //Main.player.changeLife(-1);
-        System.out.println("KILL!");
+        if(movable instanceof Player)
+        {
+            System.out.println("NOM! Loose a life!");
+            Main.player.changeLife(-1);
+        }
     }
 
     @Override
@@ -24,6 +28,7 @@ public class Enemy extends Movable
         boolean enemyIsRightOfPlayer = this.x > Main.player.x;
         boolean enemyIsAbovePlayer = this.y < Main.player.y;
 
+        // TODO: Ta bort?
         /*
         boolean playerMovedRight = Main.player.x > Main.player.oldX;
         boolean playerMovedUp = Main.player.y > Main.player.oldY;*/
