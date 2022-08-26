@@ -5,21 +5,36 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Enemy extends Movable
 {
-
+    Player target2 = Main.player;
     public Enemy(int x, int y, char symbol)
     {
         super(x, y, symbol);
     }
 
     @Override
-    public void interact(Movable movable) {
+    public void interact(Movable movable) throws IOException {
         // TODO: Ta bort ett liv. I spelaren finns en check för att se ifall livet är slut.
         //Main.player.changeLife(-1);
+        //enemyspawn points.
+        int randomPosX = ThreadLocalRandom.current().nextInt(3,75);
+        int randomPosY = ThreadLocalRandom.current().nextInt(5,38);
+
+
         if(movable instanceof Player)
         {
             System.out.println("NOM! Loose a life!");
             Main.player.changeLife(-1);
+            oldX = x;
+            oldY = y;
+            this.x = randomPosX;
+            this.y = randomPosY;
+            TerminalHandler.terminal.setCursorPosition(oldX,oldY);
+            TerminalHandler.terminal.putCharacter(' ');
+            TerminalHandler.terminal.setCursorPosition(x,y);
+            TerminalHandler.terminal.putCharacter(symbol);
+            TerminalHandler.terminal.flush();
         }
+
     }
 
     @Override
@@ -49,6 +64,8 @@ public class Enemy extends Movable
             this.x = enemyIsRightOfPlayer ? x-1 : x+1;
             this.y = enemyIsAbovePlayer ? y+1 : y-1;
         }
+
+
 
         TerminalHandler.terminal.setCursorPosition(x,y);
         TerminalHandler.terminal.putCharacter(symbol);

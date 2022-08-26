@@ -37,7 +37,16 @@ public class Main {
         positionObjects.add(treasure1);
         //endregion
 
-        obstacles.addAll(TerminalHandler.printBox(5, 5, 40, 30, Symbols.BLOCK_SOLID, TextColor.ANSI.CYAN));
+        obstacles.addAll(TerminalHandler.printBox(5, 5, 80, 40, Symbols.BLOCK_SOLID, TextColor.ANSI.GREEN));
+        obstacles.addAll(TerminalHandler.printBox(87,5,25,5,Symbols.SINGLE_LINE_CROSS,TextColor.ANSI.RED));
+        obstacles.addAll(TerminalHandler.printBox(30, 20, 0, 10, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_VERTICAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(55, 15, 0, 6, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_VERTICAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(45, 35, 7, 1, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_HORIZONTAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(8, 30, 6, 1, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_HORIZONTAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(60, 10, 4, 1, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_HORIZONTAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(8, 30, 8, 1, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_HORIZONTAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(11, 13, 8, 1, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_HORIZONTAL, TextColor.ANSI.WHITE_BRIGHT));
+        obstacles.addAll(TerminalHandler.printBox(70, 30, 0, 7, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_VERTICAL, TextColor.ANSI.WHITE_BRIGHT));
 
         movables.add(player);
         movables.add(enemy);
