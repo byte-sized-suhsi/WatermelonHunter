@@ -26,12 +26,12 @@ public class Main {
         // TODO: Välj en slutgiltig symbol för spelaren
         //region För testning
         player = new Player(30,10,'☕');
-        Enemy enemy = new Enemy(29,11, Symbols.TRIANGLE_UP_POINTING_BLACK);
-        Enemy enemy2 = new Enemy(30,10, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy = new Enemy(29,20, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy2 = new Enemy(30,20, Symbols.TRIANGLE_UP_POINTING_BLACK);
         Treasure treasure0 = new Treasure(31,11,'c');
         Treasure treasure1 = new Treasure(29,9,'c');
         ArrayList<PositionObject> positionObjects = new ArrayList<>();
-        positionObjects.add(enemy);
+        positionObjects.add(new Enemy(29,20, Symbols.TRIANGLE_UP_POINTING_BLACK));
         positionObjects.add(enemy2);
         positionObjects.add(treasure0);
         positionObjects.add(treasure1);
@@ -39,11 +39,9 @@ public class Main {
 
         obstacles.addAll(TerminalHandler.printBox(5, 5, 40, 30, Symbols.BLOCK_SOLID, TextColor.ANSI.CYAN));
 
-        movables.add(player);
-        movables.add(enemy);
-        movables.add(enemy2);
-        movables.add(treasure0);
-        movables.add(treasure1);
+        movables.add(new Player(50,25,'☕'));
+        movables.add(new Enemy(29,20, Symbols.TRIANGLE_UP_POINTING_BLACK));
+        movables.add(new Treasure(31,11,Symbols.HEART));
 
         posObjects.addAll(movables);
         posObjects.addAll(obstacles);
@@ -61,6 +59,8 @@ public class Main {
                     if (movable.x == posObject.x && movable.y == posObject.y)
                     {
                         posObject.interact(movable);
+                        //if(posObject instanceof Treasure)
+                          //  posObjects.remove(posObject);
                     }
                 }
             }
