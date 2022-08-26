@@ -16,8 +16,8 @@ public class Enemy extends Movable
         // TODO: Ta bort ett liv. I spelaren finns en check för att se ifall livet är slut.
         //Main.player.changeLife(-1);
         //enemyspawn points.
-        int randomPosX = ThreadLocalRandom.current().nextInt(3,75);
-        int randomPosY = ThreadLocalRandom.current().nextInt(5,38);
+        int randomPosX = ThreadLocalRandom.current().nextInt(6,75);
+        int randomPosY = ThreadLocalRandom.current().nextInt(6,38);
 
 
         if(movable instanceof Player)

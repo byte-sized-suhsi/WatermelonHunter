@@ -26,8 +26,8 @@ public class Main {
         // TODO: Välj en slutgiltig symbol för spelaren
         //region För testning
         player = new Player(30,10,'☕');
-        Enemy enemy = new Enemy(29,11, Symbols.TRIANGLE_UP_POINTING_BLACK);
-        Enemy enemy2 = new Enemy(30,10, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy = new Enemy(29,15, Symbols.TRIANGLE_UP_POINTING_BLACK);
+        Enemy enemy2 = new Enemy(30,20, Symbols.TRIANGLE_UP_POINTING_BLACK);
         Treasure treasure0 = new Treasure(31,11,'c');
         Treasure treasure1 = new Treasure(29,9,'c');
         ArrayList<PositionObject> positionObjects = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Main {
         //endregion
 
         obstacles.addAll(TerminalHandler.printBox(5, 5, 80, 40, Symbols.BLOCK_SOLID, TextColor.ANSI.GREEN));
-        obstacles.addAll(TerminalHandler.printBox(87,5,25,5,Symbols.SINGLE_LINE_CROSS,TextColor.ANSI.RED));
+        obstacles.addAll(TerminalHandler.printBox(87,5,8,3,Symbols.BLOCK_DENSE,TextColor.ANSI.WHITE_BRIGHT));
         obstacles.addAll(TerminalHandler.printBox(30, 20, 0, 10, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_VERTICAL, TextColor.ANSI.WHITE_BRIGHT));
         obstacles.addAll(TerminalHandler.printBox(55, 15, 0, 6, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_VERTICAL, TextColor.ANSI.WHITE_BRIGHT));
         obstacles.addAll(TerminalHandler.printBox(45, 35, 7, 1, Symbols.BOLD_FROM_NORMAL_SINGLE_LINE_HORIZONTAL, TextColor.ANSI.WHITE_BRIGHT));

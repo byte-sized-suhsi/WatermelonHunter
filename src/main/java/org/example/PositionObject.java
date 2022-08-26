@@ -23,7 +23,7 @@ public abstract class PositionObject
         this.y = y;
     }
 
-    public abstract void interact(Movable object);
+    public abstract void interact(Movable object) throws IOException;
 
     public void printToTerminal()
     {

@@ -63,7 +63,7 @@ public class Treasure extends Movable
             for (int row = 0; row < heartCount;row++)
             {
                 //uppdatera cursor pos när DU FLYTTAR NÅGOT, Okej jätte bra.
-                TerminalHandler.terminal.setCursorPosition(50 + row,50);
+                TerminalHandler.terminal.setCursorPosition(90 + row,6);
                 //TerminalHandler.terminal.setCursorPosition(heartCount,70);
                 TerminalHandler.terminal.setForegroundColor(TextColor.ANSI.RED_BRIGHT);
                 TerminalHandler.terminal.enableSGR(SGR.BOLD);
