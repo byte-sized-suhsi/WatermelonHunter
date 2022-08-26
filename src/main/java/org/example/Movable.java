@@ -44,13 +44,26 @@ public abstract class Movable extends PositionObject
         }
     }
 
-    private void movePos(int x, int y)
+    public void updatePosition(int x, int y)
     {
         this.x = x;
         this.y = y;
     }
 
+    public void updateOldPosistion()
+    {
+        oldX = x;
+        oldY = y;
+    }
 
-    public abstract void move() throws IOException, InterruptedException;
+
+    public void move() throws IOException, InterruptedException
+    {
+        int randomX = ThreadLocalRandom.current().nextInt(-1, 2);
+        int randomY = ThreadLocalRandom.current().nextInt(-1, 2);
+
+        this.x = x;
+        this.y = y;
+    }
 }
 

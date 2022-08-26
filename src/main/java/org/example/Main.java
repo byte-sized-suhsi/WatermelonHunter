@@ -2,6 +2,7 @@ package org.example;
 
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.Symbols;
+import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -15,9 +16,14 @@ public class Main {
     //public static DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     //public static Terminal terminal = null;
     public static Player player;
+    private static ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private  static ArrayList<PositionObject> posObjects = new ArrayList<>();
+    private static ArrayList<Movable> movables = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
+        // TODO: Städa upp testningen
+        // TODO: Välj en slutgiltig symbol för spelaren
         //region För testning
         player = new Player(30,10,'☕');
         Enemy enemy = new Enemy(29,11, Symbols.TRIANGLE_UP_POINTING_BLACK);
@@ -31,43 +37,39 @@ public class Main {
         positionObjects.add(treasure1);
         //endregion
 
+        obstacles.addAll(TerminalHandler.printBox(5, 5, 40, 30, Symbols.BLOCK_SOLID, TextColor.ANSI.CYAN));
+
+        movables.add(player);
+        movables.add(enemy);
+        movables.add(enemy2);
+        movables.add(treasure0);
+        movables.add(treasure1);
+
+        posObjects.addAll(movables);
+        posObjects.addAll(obstacles);
+
+        //TerminalHandler.movingBoxLines(10,10,40,10,10,0);
+
+        //TerminalHandler.terminal.setCursorPosition(0,0);
 
 
-
-
-        TerminalHandler.terminal.setCursorPosition(0,0);
-        TerminalHandler.printBox(5, 5, 40, 30, TextColor.ANSI.CYAN);
-        TerminalHandler.printBox(70,5,25,40, TextColor.ANSI.GREEN);
-        TerminalHandler.printBox(5,40,50,5, TextColor.ANSI.MAGENTA);
-        TerminalHandler.printCircle(10,20,20, TextColor.ANSI.RED);
-
-
-        // TODO: do while för game loop
-        //      läs input, rör spelare och monster
         do {
-            player.move();
+            for (Movable movable : movables) {
+                movable.move();
 
-            enemy.move();
-            enemy2.move();
-            treasure0.move();
-            treasure1.move();
-
-            // Checka om spelaren har stött på ett annat objekt
-            for (int i = 0; i < positionObjects.size(); i++) {
-                    if(player.x == positionObjects.get(i).x && player.y == positionObjects.get(i).y)
+                for (PositionObject posObject : posObjects) {
+                    if (movable.x == posObject.x && movable.y == posObject.y)
                     {
-                        positionObjects.get(i).interact();
-                        // TODO: om treasure, flytta till annan position
-
-                        // TODO: om enemy, flytta enemy bort spelare
+                        posObject.interact(movable);
                     }
+                }
             }
         } while(true);
     }
 
 
-
-    public static KeyStroke readUserInputType() throws IOException, InterruptedException {
+    public static KeyStroke readUserInputType() throws IOException, InterruptedException
+    {
         KeyStroke keyStroke = null;
 
         do {
@@ -76,5 +78,63 @@ public class Main {
         } while(keyStroke == null);
 
         return keyStroke;
+    }
+
+    public static KeyStroke readUserInputParallell() throws IOException, InterruptedException
+    {
+        int index = 0;
+        int boxLineOffset = 0;
+        KeyStroke keyStroke = null;
+
+        do {
+            index++;
+            if (index % 100 == 0) {
+                // Pseudoparallell kod här
+                TerminalHandler.movingBoxLines(10,10,40,10,20,boxLineOffset);
+                TerminalHandler.movingBoxLines(10,10,40,10,20,30 +boxLineOffset);
+
+                movables.get(2).move();
+
+                boxLineOffset++;
+                /*if (!continueReadingInput) {
+                    terminal.close();
+                    break;
+                }*/
+            }
+            Thread.sleep(5); // might throw InterruptedException
+            keyStroke = TerminalHandler.terminal.pollInput();
+        }
+        while (keyStroke == null);
+
+        return keyStroke;
+
+
+        /*
+        int index = 0;
+        int offset = 0;
+        boolean continueReadingInput = true;
+
+        while(continueReadingInput)
+        {
+            KeyStroke keyStroke = null;
+
+            do {
+                index++;
+                if(index % 100 == 0)
+                {
+                    // Parallell stuff goes here
+                    TerminalHandler.movingBoxLines(10,10,40,10,10,offset);
+                }
+            } while(keyStroke == null);
+        }
+
+        KeyStroke keyStroke = null;
+
+        do {
+            Thread.sleep(5);
+            keyStroke = TerminalHandler.terminal.pollInput();
+        } while(keyStroke == null);
+
+        return keyStroke;*/
     }
 }

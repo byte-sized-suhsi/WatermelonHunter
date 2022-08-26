@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.IOException;
+
 public abstract class PositionObject
 {
     protected int x;
@@ -13,5 +15,25 @@ public abstract class PositionObject
         this.symbol = symbol;
     }
 
-    public abstract void interact();
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public abstract void interact(Movable object);
+
+    public void printToTerminal()
+    {
+        try {
+            TerminalHandler.terminal.setCursorPosition(x,y);
+            TerminalHandler.terminal.putCharacter(symbol);
+
+            TerminalHandler.terminal.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

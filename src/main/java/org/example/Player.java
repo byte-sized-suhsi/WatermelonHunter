@@ -7,11 +7,8 @@ import java.io.IOException;
 
 public class Player extends Movable
 {
-
-
     private int lifeCounter;
 
-    // Ändra oldX och oldY, kan egentligen bara initieras till x och y
     public Player(int x, int y, char symbol)
     {
         super(x, y, symbol);
@@ -33,31 +30,29 @@ public class Player extends Movable
     }
 
     @Override
-    public void interact() {
+    public void interact(Movable movable) {
         // do nothing
     }
 
     @Override
     public void move() throws IOException, InterruptedException
     {
-        // TODO: förflytta spelaren
         KeyStroke keyStroke = Main.readUserInputType();
+        //KeyStroke keyStroke = Main.readUserInputParallell();
         KeyType type = keyStroke.getKeyType();
         String typeString = type.name();
-
-
 
         // Spara dom gamla x koordinaterna
         oldX = x;
         oldY = y;
 
-        //
+
         switch(typeString)
         {
-            case "ArrowUp" -> this.y-=2;           // y - 1
-            case "ArrowDown" -> this.y+=2;         // y + 1
-            case "ArrowRight" -> this.x+=2;        // x + 1
-            case "ArrowLeft" -> this.x-=2;         // x - 1
+            case "ArrowUp" -> this.y-=1;           // y - 1
+            case "ArrowDown" -> this.y+=1;         // y + 1
+            case "ArrowRight" -> this.x+=1;        // x + 1
+            case "ArrowLeft" -> this.x-=1;         // x - 1
         }
 
         // Skriver ut den nya karaktären
